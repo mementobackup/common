@@ -15,7 +15,7 @@ import (
 type JSONCommand struct {
     Name      string  `json:name`
     Directory string  `json:directory`
-    ACL       boolean `json:acl`
+    ACL       bool `json:acl`
 }
 
 type JSONMessage struct {
