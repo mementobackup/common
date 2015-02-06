@@ -13,9 +13,9 @@ import (
 )
 
 type JSONCommand struct {
-    Name      string  `json:name`
-    Directory string  `json:directory`
-    ACL       bool `json:acl`
+	Name      string `json:name`
+	Directory string `json:directory`
+	ACL       bool   `json:acl`
 }
 
 type JSONMessage struct {
@@ -23,12 +23,12 @@ type JSONMessage struct {
 	Command JSONCommand `json:command`
 }
 
-func Sendresult(conn net.Conn, result, message string) {
-	type JSONResult struct {
-		Result  string `json:"result"`
-		Message string `json:"message"`
-	}
+type JSONResult struct {
+	Result  string `json:"result"`
+	Message string `json:"message"`
+}
 
+func Sendresult(conn net.Conn, result, message string) {
 	jsonmessage, _ := json.Marshal(&JSONResult{
 		Result:  result,
 		Message: message,
