@@ -13,16 +13,16 @@ import (
 )
 
 type JSONAcl struct {
-    Type  string `json:"type"`
-    Link  string `json:"link"`
-    Size  string `json:"size"`
-    Hash  string `json:"hash"`
-    Atime string `json:"atime"`
-    Mtime string `json:"mtime"`
-    Ctime string `json:"ctime"`
-    Mode  string `json:"mode"`
-    User  string `json:"user"`
-    Group string `json:"group"`
+    Type  string `json:"type,omitempty"`
+    Link  string `json:"link,omitempty"`
+    Size  string `json:"size,omitempty"`
+    Hash  string `json:"hash,omitempty"`
+    Atime string `json:"atime,omitempty"`
+    Mtime string `json:"mtime,omitempty"`
+    Ctime string `json:"ctime,omitempty"`
+    Mode  string `json:"mode,omitempty"`
+    User  string `json:"user,omitempty"`
+    Group string `json:"group,omitempty"`
 }
 
 type JSONCommand struct {
@@ -39,9 +39,13 @@ type JSONMessage struct {
 type JSONResult struct {
     Result  string  `json:"result"`
     Message string  `json:"message"`
-    Name    string  `json:"name"`
-    Os      string  `json:"os"`
-    Acl     JSONAcl `json:"acl"`
+}
+
+type JSONFile struct {
+    Result  string  `json:result`
+    Name    string  `json:"name,omitempty"`
+    Os      string  `json:"os,omitempty"`
+    Acl     JSONAcl `json:"acl,omitempty"`
 }
 
 func Sendresult(conn net.Conn, result JSONResult) {
