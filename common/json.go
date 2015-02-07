@@ -8,48 +8,54 @@
 package common
 
 import (
-	"encoding/json"
-	"net"
+    "encoding/json"
+    "net"
 )
 
 type JSONAcl struct {
-    Type  string `json:"type,omitempty"`
-    Link  string `json:"link,omitempty"`
-    Size  string `json:"size,omitempty"`
-    Hash  string `json:"hash,omitempty"`
+    Type  string `json:"type"`
+    Link  string `json:"link"`
+    Size  string `json:"size"`
+    Hash  string `json:"hash"`
     Atime string `json:"atime,omitempty"`
     Mtime string `json:"mtime,omitempty"`
     Ctime string `json:"ctime,omitempty"`
-    Mode  string `json:"mode,omitempty"`
-    User  string `json:"user,omitempty"`
-    Group string `json:"group,omitempty"`
+    Mode  string `json:"mode"`
+    User  string `json:"user"`
+    Group string `json:"group"`
 }
 
 type JSONCommand struct {
-	Name      string `json:name`
-	Directory string `json:directory`
-	ACL       bool   `json:acl`
+    Name      string `json:name`
+    Directory string `json:directory`
+    ACL       bool   `json:acl`
 }
 
 type JSONMessage struct {
-	Context string      `json:context`
-	Command JSONCommand `json:command`
+    Context string      `json:context`
+    Command JSONCommand `json:command`
 }
 
 type JSONResult struct {
-    Result  string  `json:"result"`
-    Message string  `json:"message"`
+    Result  string `json:"result"`
+    Message string `json:"message"`
 }
 
 type JSONFile struct {
-    Result  string  `json:result`
-    Name    string  `json:"name,omitempty"`
-    Os      string  `json:"os,omitempty"`
-    Acl     JSONAcl `json:"acl,omitempty"`
+    Result string  `json:"result"`
+    Name   string  `json:"name"`
+    Os     string  `json:"os"`
+    Acl    JSONAcl `json:"acl"`
 }
 
-func Sendresult(conn net.Conn, result JSONResult) {
-    jsonmessage, _ := json.Marshal(result)
+func (j *JSONResult) Send(conn net.Conn) {
+    jsonmessage, _ := json.Marshal(j)
 
-	conn.Write(jsonmessage)
+    conn.Write(jsonmessage)
+}
+
+func (j *JSONFile) Send(conn net.Conn) {
+    jsonmessage, _ := json.Marshal(j)
+
+    conn.Write(jsonmessage)
 }
