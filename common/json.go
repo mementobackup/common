@@ -44,7 +44,7 @@ type JSONResult struct {
     Acl     JSONAcl `json:"acl"`
 }
 
-func Sendresult(conn net.Conn, result &JSONResult) {
+func Sendresult(conn net.Conn, result JSONResult) {
     jsonmessage, _ := json.Marshal(&JSONResult)
 
 	conn.Write(jsonmessage)
