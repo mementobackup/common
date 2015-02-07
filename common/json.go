@@ -28,7 +28,7 @@ type JSONResult struct {
 	Message string `json:"message"`
 }
 
-func Sendresult(conn *net.Conn, result, message string) {
+func Sendresult(conn net.Conn, result, message string) {
 	jsonmessage, _ := json.Marshal(&JSONResult{
 		Result:  result,
 		Message: message,
