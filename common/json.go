@@ -12,19 +12,6 @@ import (
     "net"
 )
 
-type JSONAcl struct {
-    Type  string `json:"type"`
-    Link  string `json:"link"`
-    Size  string `json:"size"`
-    Hash  string `json:"hash"`
-    Atime string `json:"atime,omitempty"`
-    Mtime string `json:"mtime,omitempty"`
-    Ctime string `json:"ctime,omitempty"`
-    Mode  string `json:"mode"`
-    User  string `json:"user"`
-    Group string `json:"group"`
-}
-
 type JSONCommand struct {
     Name      string `json:name`
     Directory string `json:directory`
@@ -41,11 +28,24 @@ type JSONResult struct {
     Message string `json:"message"`
 }
 
+type JSONFileAcl struct {
+    Type  string `json:"type"`
+    Link  string `json:"link"`
+    Size  string `json:"size"`
+    Hash  string `json:"hash"`
+    Atime string `json:"atime,omitempty"`
+    Mtime string `json:"mtime,omitempty"`
+    Ctime string `json:"ctime,omitempty"`
+    Mode  string `json:"mode"`
+    User  string `json:"user"`
+    Group string `json:"group"`
+}
+
 type JSONFile struct {
-    Result string  `json:"result"`
-    Name   string  `json:"name"`
-    Os     string  `json:"os"`
-    Acl    JSONAcl `json:"acl"`
+    Result string      `json:"result"`
+    Name   string      `json:"name"`
+    Os     string      `json:"os"`
+    Acl    JSONFileAcl `json:"acl"`
 }
 
 func (j *JSONResult) Send(conn net.Conn) {
