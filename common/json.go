@@ -13,16 +13,16 @@ import (
 )
 
 type JSONAcl struct {
-    Type    string `json:"type"`
-    Link    string `json:"link"`
-    Size    string `json:"size"`
-    Hash    string `json:"hash"`
-    Atime   string `json:"atime"`
-    Mtime   string `json:"mtime"`
-    Ctime   string `json:"ctime"`
-    Mode    string `json:"mode"`
-    User    string `json:"user"`
-    Group   string `json:"group"`
+    Type  string `json:"type"`
+    Link  string `json:"link"`
+    Size  string `json:"size"`
+    Hash  string `json:"hash"`
+    Atime string `json:"atime"`
+    Mtime string `json:"mtime"`
+    Ctime string `json:"ctime"`
+    Mode  string `json:"mode"`
+    User  string `json:"user"`
+    Group string `json:"group"`
 }
 
 type JSONCommand struct {
@@ -44,11 +44,8 @@ type JSONResult struct {
     Acl     JSONAcl `json:"acl"`
 }
 
-func Sendresult(conn net.Conn, result, message string) {
-	jsonmessage, _ := json.Marshal(&JSONResult{
-		Result:  result,
-		Message: message,
-	})
+func Sendresult(conn net.Conn, result &JSONResult) {
+    jsonmessage, _ := json.Marshal(&JSONResult)
 
 	conn.Write(jsonmessage)
 }
