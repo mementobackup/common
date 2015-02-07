@@ -26,6 +26,8 @@ type JSONMessage struct {
 type JSONResult struct {
 	Result  string `json:"result"`
 	Message string `json:"message"`
+    Name    string `json:"name"`
+    Os      string `json:"os"`
 }
 
 func Sendresult(conn net.Conn, result, message string) {
