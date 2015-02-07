@@ -45,7 +45,7 @@ type JSONResult struct {
 }
 
 func Sendresult(conn net.Conn, result JSONResult) {
-    jsonmessage, _ := json.Marshal(&JSONResult)
+    jsonmessage, _ := json.Marshal(JSONResult)
 
 	conn.Write(jsonmessage)
 }
