@@ -12,6 +12,19 @@ import (
 	"net"
 )
 
+type JSONAcl struct {
+    Type    string `json:"type"`
+    Link    string `json:"link"`
+    Size    string `json:"size"`
+    Hash    string `json:"hash"`
+    Atime   string `json:"atime"`
+    Mtime   string `json:"mtime"`
+    Ctime   string `json:"ctime"`
+    Mode    string `json:"mode"`
+    User    string `json:"user"`
+    Group   string `json:"group"`
+}
+
 type JSONCommand struct {
 	Name      string `json:name`
 	Directory string `json:directory`
@@ -24,10 +37,11 @@ type JSONMessage struct {
 }
 
 type JSONResult struct {
-	Result  string `json:"result"`
-	Message string `json:"message"`
-    Name    string `json:"name"`
-    Os      string `json:"os"`
+    Result  string  `json:"result"`
+    Message string  `json:"message"`
+    Name    string  `json:"name"`
+    Os      string  `json:"os"`
+    Acl     JSONAcl `json:"acl"`
 }
 
 func Sendresult(conn net.Conn, result, message string) {
