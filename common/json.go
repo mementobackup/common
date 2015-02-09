@@ -46,7 +46,7 @@ type JSONFile struct {
 	Name   string        `json:"name"`
 	Type   string        `json:"type"`
 	Os     string        `json:"os"`
-	Acl    []JSONFileAcl `json:"acl"`
+	Acl    []JSONFileAcl `json:"acl,omitempty"`
 }
 
 func (j *JSONResult) Send(conn net.Conn) {
