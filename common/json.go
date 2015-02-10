@@ -40,7 +40,7 @@ type JSONFileAcl struct {
 type JSONFile struct {
 	Result string        `json:"result"`
 	Name   string        `json:"name"`
-	Size   int32         `json:"size,omitempty"`
+	Size   int64         `json:"size,omitempty"`
 	Hash   string        `json:"hash,omitempty"`
 	Type   string        `json:"type"`
 	Os     string        `json:"os"`
