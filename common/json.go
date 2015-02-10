@@ -29,10 +29,6 @@ type JSONResult struct {
 }
 
 type JSONFileAcl struct {
-	Type  string `json:"type"`
-	Link  string `json:"link"`
-	Size  string `json:"size"`
-	Hash  string `json:"hash"`
 	Atime string `json:"atime,omitempty"`
 	Mtime string `json:"mtime,omitempty"`
 	Ctime string `json:"ctime,omitempty"`
