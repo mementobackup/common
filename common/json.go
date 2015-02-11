@@ -51,17 +51,16 @@ type JSONFile struct {
 	Acl    []JSONFileAcl `json:"acl,omitempty"`
 }
 
-func send(j *JSONResult, conn net.Conn) {
+func (j *JSONResult) Send(conn net.Conn) {
 	jsonmessage, _ := json.Marshal(j)
 	jsonmessage = append(jsonmessage, "\n"...)
 
 	conn.Write(jsonmessage)
 }
 
-func (j *JSONResult) Send(conn net.Conn) {
-	send(j, conn)
-}
-
 func (j *JSONFile) Send(conn net.Conn) {
-	send(j, conn)
+	jsonmessage, _ := json.Marshal(j)
+	jsonmessage = append(jsonmessage, "\n"...)
+
+	conn.Write(jsonmessage)
 }
