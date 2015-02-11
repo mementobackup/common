@@ -53,12 +53,14 @@ type JSONFile struct {
 
 func (j *JSONResult) Send(conn net.Conn) {
 	jsonmessage, _ := json.Marshal(j)
+	jsonmessage = append(jsonmessage, "\n"...)
 
 	conn.Write(jsonmessage)
 }
 
 func (j *JSONFile) Send(conn net.Conn) {
 	jsonmessage, _ := json.Marshal(j)
+	jsonmessage = append(jsonmessage, "\n"...)
 
 	conn.Write(jsonmessage)
 }
