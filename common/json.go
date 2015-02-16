@@ -47,7 +47,7 @@ type JSONFile struct {
 	Mode   string        `json:"mode,omitempty"`
 	User   string        `json:"user,omitempty"`
 	Group  string        `json:"group,omitempty"`
-	Mtime  string        `json:"mtime,omitempty"`
+	Mtime  int64         `json:"mtime,omitempty"`
 	Acl    []JSONFileAcl `json:"acl,omitempty"`
 }
 
