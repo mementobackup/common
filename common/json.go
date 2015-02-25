@@ -13,9 +13,9 @@ import (
 )
 
 type JSONCommand struct {
-	Name      string `json:name`
+	Name      string   `json:name`
 	Directory []string `json:directory,omitempty`
-	ACL       bool   `json:acl,omitempty`
+	ACL       bool     `json:acl,omitempty`
 }
 
 type JSONMessage struct {
@@ -29,12 +29,9 @@ type JSONResult struct {
 }
 
 type JSONFileAcl struct {
-	Atime string `json:"atime,omitempty"`
-	Mtime string `json:"mtime,omitempty"`
-	Ctime string `json:"ctime,omitempty"`
-	Mode  string `json:"mode"`
-	User  string `json:"user"`
-	Group string `json:"group"`
+	Mode  string `json:"mode,omitempty"`
+	User  string `json:"user,omitempty"`
+	Group string `json:"group,omitempty"`
 }
 
 type JSONFile struct {
