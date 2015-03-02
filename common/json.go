@@ -15,6 +15,7 @@ import (
 type JSONCommand struct {
 	Name      string   `json:name`
 	Directory []string `json:directory,omitempty`
+	Filename  string   `json:filename,omitempty`
 	ACL       bool     `json:acl,omitempty`
 }
 
