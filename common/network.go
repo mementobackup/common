@@ -16,19 +16,20 @@ import (
 
 const BUFFER = 1024
 
-func Sendfile(filename string, connection net.Conn) {
+func Sendfile(filename string, connection net.Conn) error {
 	var err error
 
 	file, err := os.Open(strings.TrimSpace(filename)) // For read access.
 	if err != nil {
 		connection.Write([]byte("-1"))
-		// TODO: manage error
+		return err
 	}
 	defer file.Close()
 
 	_, err = io.Copy(connection, file)
-
 	if err != nil {
-		// TODO: manage error
+		return err
 	}
+
+	return nil
 }
