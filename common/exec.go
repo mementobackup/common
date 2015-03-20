@@ -24,6 +24,7 @@ func ExecuteCMD(command string) error {
 
 	if err := cmd.Run(); err != nil {
 		// FIXME: due the specific software for now is not possible to manage exit with error from external program
+        return err
 	}
 
 	return nil
