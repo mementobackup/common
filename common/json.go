@@ -27,7 +27,8 @@ type JSONMessage struct {
 
 type JSONResult struct {
 	Result  string `json:"result"`
-	Message string `json:"message"`
+	Message string `json:"message",omitempty`
+	Data JSONFile `json:"data",omitempty`
 }
 
 type JSONFileAcl struct {
