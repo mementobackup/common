@@ -75,16 +75,3 @@ func (j *JSONResult) Send(conn net.Conn) error {
         return nil
     }
 }
-
-func (j *JSONFile) Send(conn net.Conn) error {
-	jsonmessage, _ := json.Marshal(j)
-	jsonmessage = append(jsonmessage, "\n"...)
-
-    _, err := conn.Write(jsonmessage)
-
-    if err != nil {
-        return err
-    } else {
-        return nil
-    }
-}
