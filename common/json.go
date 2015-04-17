@@ -26,9 +26,9 @@ type JSONMessage struct {
 }
 
 type JSONResult struct {
-	Result  string `json:"result"`
-	Message string `json:"message",omitempty`
-	Data JSONFile `json:"data",omitempty`
+	Result  string   `json:"result"`
+	Message string   `json:"message",omitempty`
+	Data    JSONFile `json:"data",omitempty`
 }
 
 type JSONFileAcl struct {
@@ -38,40 +38,40 @@ type JSONFileAcl struct {
 }
 
 type JSONFile struct {
-	Name   string        `json:"name"`
-	Size   int64         `json:"size,omitempty"`
-	Hash   string        `json:"hash,omitempty"`
-	Type   string        `json:"type"`
-	Os     string        `json:"os"`
-	Mode   string        `json:"mode,omitempty"`
-	User   string        `json:"user,omitempty"`
-	Group  string        `json:"group,omitempty"`
-	Mtime  int64         `json:"mtime,omitempty"`
-	Acl    []JSONFileAcl `json:"acl,omitempty"`
+	Name  string        `json:"name"`
+	Size  int64         `json:"size,omitempty"`
+	Hash  string        `json:"hash,omitempty"`
+	Type  string        `json:"type"`
+	Os    string        `json:"os"`
+	Mode  string        `json:"mode,omitempty"`
+	User  string        `json:"user,omitempty"`
+	Group string        `json:"group,omitempty"`
+	Mtime int64         `json:"mtime,omitempty"`
+	Acl   []JSONFileAcl `json:"acl,omitempty"`
 }
 
 func (j *JSONMessage) Send(conn net.Conn) error {
-    jsonmessage, _ := json.Marshal(j)
-    jsonmessage = append(jsonmessage, "\n"...)
+	jsonmessage, _ := json.Marshal(j)
+	jsonmessage = append(jsonmessage, "\n"...)
 
-    _, err := conn.Write(jsonmessage)
+	_, err := conn.Write(jsonmessage)
 
-    if err != nil {
-        return err
-    } else {
-        return nil
-    }
+	if err != nil {
+		return err
+	} else {
+		return nil
+	}
 }
 
 func (j *JSONResult) Send(conn net.Conn) error {
 	jsonmessage, _ := json.Marshal(j)
 	jsonmessage = append(jsonmessage, "\n"...)
 
-    _, err := conn.Write(jsonmessage)
+	_, err := conn.Write(jsonmessage)
 
-    if err != nil {
-        return err
-    } else {
-        return nil
-    }
+	if err != nil {
+		return err
+	} else {
+		return nil
+	}
 }
