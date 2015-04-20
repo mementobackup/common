@@ -47,6 +47,7 @@ type JSONFile struct {
 	User  string        `json:"user,omitempty"`
 	Group string        `json:"group,omitempty"`
 	Mtime int64         `json:"mtime,omitempty"`
+	Link  string        `json:"link,omitempty"`
 	Acl   []JSONFileAcl `json:"acl,omitempty"`
 }
 
