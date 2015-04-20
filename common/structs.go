@@ -10,8 +10,8 @@ package common
 import "github.com/go-ini/ini"
 
 type Section struct {
-    Cfg     *ini.File
-    Name    string
-    Grace   string
-    Dataset int
+    Name       string
+    Grace      string
+    Dataset    int
+    Compressed bool
 }
