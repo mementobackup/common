@@ -7,8 +7,6 @@
 
 package common
 
-import "github.com/go-ini/ini"
-
 type Section struct {
     Name       string
     Grace      string
