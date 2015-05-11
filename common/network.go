@@ -14,8 +14,6 @@ import (
 	"strings"
 )
 
-const BUFFER = 1024
-
 func Sendfile(filename string, connection net.Conn) error {
 	var err error
 
@@ -31,5 +29,22 @@ func Sendfile(filename string, connection net.Conn) error {
 		return err
 	}
 
+	return nil
+}
+
+func Receivefile(filename string, connection net.Conn) error {
+	var err error
+
+	file, err := os.Create(strings.TrimSpace(filename))
+	if err != nil {
+		return err
+	}
+
+	_, err = io.Copy(file, connection)
+	if err != nil {
+		return err
+	}
+
+	file.Close()
 	return nil
 }
