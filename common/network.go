@@ -12,6 +12,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"compress/gzip"
 )
 
 func Sendfile(filename string, connection net.Conn) error {
@@ -32,19 +33,32 @@ func Sendfile(filename string, connection net.Conn) error {
 	return nil
 }
 
-func Receivefile(filename string, connection net.Conn) error {
+func Receivefile(filename string, connection net.Conn, compressed bool) error {
+	var file *os.File
 	var err error
 
-	file, err := os.Create(strings.TrimSpace(filename))
-	if err != nil {
-		return err
+	if compressed {
+		if file, err = os.Create(strings.TrimSpace(filename) + ".compressed"); err != nil {
+			return err
+		}
+		compress := gzip.NewWriter(file)
+		defer compress.Close()
+
+		if _, err = io.Copy(compress, connection); err != nil {
+			return err
+		}
+		file.Close()
+
+	} else {
+		if file, err = os.Create(strings.TrimSpace(filename)); err != nil {
+			return err
+		}
+
+		if _, err = io.Copy(file, connection); err != nil {
+			return err
+		}
+		file.Close()
 	}
 
-	_, err = io.Copy(file, connection)
-	if err != nil {
-		return err
-	}
-
-	file.Close()
 	return nil
 }
