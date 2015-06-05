@@ -32,19 +32,21 @@ func Sendfile(filename string, connection net.Conn) error {
 	return nil
 }
 
-func Receivefile(filename string, connection net.Conn) error {
+func Receivefile(filename string, connection net.Conn) (string, error) {
 	var err error
 
 	file, err := os.Create(strings.TrimSpace(filename))
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer file.Close()
 
 	_, err = io.Copy(file, connection)
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	return nil
+	hash := Md5(strings.TrimSpace(filename))
+
+	return hash, nil
 }
