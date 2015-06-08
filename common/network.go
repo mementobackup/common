@@ -12,6 +12,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"encoding/hex"
 )
 
 func Sendfile(filename string, connection net.Conn) error {
@@ -48,5 +49,5 @@ func Receivefile(filename string, connection net.Conn) (string, error) {
 
 	hash := Md5(strings.TrimSpace(filename))
 
-	return hash, nil
+	return hex.EncodeToString(hash), nil
 }
