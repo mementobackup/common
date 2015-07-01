@@ -40,12 +40,12 @@ func Receivefile(filename string, connection net.Conn) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer file.Close()
 
 	_, err = io.Copy(file, connection)
 	if err != nil {
 		return "", err
 	}
+	file.Close()
 
 	hash := Md5(strings.TrimSpace(filename))
 
