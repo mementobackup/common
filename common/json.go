@@ -16,7 +16,7 @@ type JSONCommand struct {
 	Name      string   `json:name`
 	Cmd       string   `json:cmd,omitempty`
 	Directory []string `json:directory,omitempty`
-	File      JSONFile `json:file,omitempty`
+	File string   `json:file,omitempty`
 	ACL       bool     `json:acl,omitempty`
 }
 
