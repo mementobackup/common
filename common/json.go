@@ -13,11 +13,11 @@ import (
 )
 
 type JSONCommand struct {
-	Name      string   `json:name`
-	Cmd       string   `json:cmd,omitempty`
-	Directory []string `json:directory,omitempty`
-	File string   `json:file,omitempty`
-	ACL       bool     `json:acl,omitempty`
+	Name    string   `json:name`
+	Cmd     string   `json:cmd,omitempty`
+	Paths   []string `json:paths,omitempty`
+	Element JSONFile `json:element,omitempty`
+	ACL     bool     `json:acl,omitempty`
 }
 
 type JSONMessage struct {
