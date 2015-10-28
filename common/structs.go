@@ -7,9 +7,21 @@
 
 package common
 
+import "fmt"
+
 type Section struct {
-    Name       string
-    Grace      string
-    Dataset    int
-    Compressed bool
+	Name       string
+	Grace      string
+	Dataset    int
+	Compressed bool
+}
+
+type OperationErr struct {
+	Position  int
+	Operation string
+	Message   string
+}
+
+func (e *OperationErr) Error() string {
+	return fmt.Sprintf(" %s: %d - %s", e.Operation, e.Position, e.Message)
 }
