@@ -23,5 +23,5 @@ type OperationErr struct {
 }
 
 func (e *OperationErr) Error() string {
-	return fmt.Sprintf(" %s: %d - %s", e.Operation, e.Position, e.Message)
+	return fmt.Sprintf("%s: %d - %s", e.Operation, e.Position, e.Message)
 }
