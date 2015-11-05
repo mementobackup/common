@@ -13,22 +13,22 @@ import (
 )
 
 type JSONCommand struct {
-	Name    string   `json:name`
-	Cmd     string   `json:cmd,omitempty`
-	Paths   []string `json:paths,omitempty`
-	Element JSONFile `json:element,omitempty`
-	ACL     bool     `json:acl,omitempty`
+	Name    string   `json:"name"`
+	Cmd     string   `json:"cmd,omitempty"`
+	Paths   []string `json:"paths,omitempty"`
+	Element JSONFile `json:"element,omitempty"`
+	ACL     bool     `json:"acl,omitempty"`
 }
 
 type JSONMessage struct {
-	Context string      `json:context`
-	Command JSONCommand `json:command`
+	Context string      `json:"context"`
+	Command JSONCommand `json:"command"`
 }
 
 type JSONResult struct {
 	Result  string   `json:"result"`
-	Message string   `json:"message",omitempty`
-	Data    JSONFile `json:"data",omitempty`
+	Message string   `json:"message,omitempty"`
+	Data    JSONFile `json:"data,omitempty"`
 }
 
 type JSONFileAcl struct {
