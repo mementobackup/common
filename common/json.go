@@ -38,18 +38,19 @@ type JSONFileAcl struct {
 }
 
 type JSONFile struct {
-	Name  string        `json:"name"`
-	Size  int64         `json:"size,omitempty"`
-	Hash  string        `json:"hash,omitempty"`
-	Type  string        `json:"type"`
-	Os    string        `json:"os"`
-	Mode  string        `json:"mode,omitempty"`
-	User  string        `json:"user,omitempty"`
-	Group string        `json:"group,omitempty"`
-	Mtime int64         `json:"mtime,omitempty"`
-	Ctime int64         `json:"ctime,omitempty"`
-	Link  string        `json:"link,omitempty"`
-	Acl   []JSONFileAcl `json:"acl,omitempty"`
+	Name       string        `json:"name"`
+	Size       int64         `json:"size,omitempty"`
+	Compressed bool          `json:"compressed,omitempty"`
+	Hash       string        `json:"hash,omitempty"`
+	Type       string        `json:"type"`
+	Os         string        `json:"os"`
+	Mode       string        `json:"mode,omitempty"`
+	User       string        `json:"user,omitempty"`
+	Group      string        `json:"group,omitempty"`
+	Mtime      int64         `json:"mtime,omitempty"`
+	Ctime      int64         `json:"ctime,omitempty"`
+	Link       string        `json:"link,omitempty"`
+	Acl        []JSONFileAcl `json:"acl,omitempty"`
 }
 
 func (j *JSONMessage) Send(conn net.Conn) error {
