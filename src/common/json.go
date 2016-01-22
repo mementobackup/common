@@ -18,6 +18,7 @@ type JSONCommand struct {
 	Paths   []string `json:"paths,omitempty"`
 	Element JSONFile `json:"element,omitempty"`
 	ACL     bool     `json:"acl,omitempty"`
+	Exclude string   `json:"exclude,omitempty"`
 }
 
 type JSONMessage struct {
