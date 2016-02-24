@@ -15,7 +15,7 @@ import (
 	"encoding/hex"
 )
 
-func Sendfile(filename string, connection net.Conn) error {
+func SendFile(filename string, connection net.Conn) error {
 	var err error
 
 	file, err := os.Open(strings.TrimSpace(filename)) // For read access.
@@ -33,7 +33,7 @@ func Sendfile(filename string, connection net.Conn) error {
 	return nil
 }
 
-func Receivefile(filename string, connection net.Conn) (string, error) {
+func ReceiveFile(filename string, connection net.Conn) (string, error) {
 	var err error
 
 	file, err := os.Create(strings.TrimSpace(filename))
